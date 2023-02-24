@@ -1,8 +1,20 @@
 import random
 
+stages = ['''
+   +---+
+   |   |    
+   0   |
+  /|\  |
+   |   |
+  / \  |   
+          ''']
+
 word_list = ["ardvark", "baboon", "camel"]
 display_list = []
 running = True
+playerLife = 6
+
+letterFound = False
 
 #chosen_word = word_list[random.randint(0,len(word_list) -1)]
 chosen_word = random.choice(word_list)
@@ -30,17 +42,32 @@ print(display_list)
 
 while running:
     playerGuess = input("Guess a letter: ").lower()
+    playerGuessHits = 0
     
     for i in range(len(chosen_word)):
+        
         letter = chosen_word[i]
-        print(f"Current Position: {i}\n Current Letter: {letter}\n Guessed Letter: {playerGuess}")
+        #print(f"Current Position: {i}\n Current Letter: {letter}\n Guessed Letter: {playerGuess}")
         if letter == playerGuess:
+            #print(f"{playerGuess} - {letter} found")
             display_list[i] = letter
+            playerGuessHits += 1
+        else:
+            #print(f"{playerGuess} - {letter} not found")
     
+    if playerGuessHits == 0:
+        playerLife -= 1
+                
     if "_" not in display_list:
         running = False
         print("You win!")
+        print(display_list)
+    elif playerLife <= 0:
+        running = False
+        print("You ded!")
+        print(display_list)
     else:
+        print(f"{playerLife} / {playerGuessHits}")
         print(display_list)
     
     #try:
