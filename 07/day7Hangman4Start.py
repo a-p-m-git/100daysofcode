@@ -7,7 +7,49 @@ stages = ['''
   /|\  |
    |   |
   / \  |   
-          ''']
+========''', '''
+   +---+
+   |   |    
+   0   |
+  /|\  |
+   |   |
+  /    |   
+========''', '''
+   +---+
+   |   |    
+   0   |
+  /|\  |
+   |   |
+       |   
+========''', '''
+   +---+
+   |   |    
+   0   |
+  / \  |
+       |
+       |   
+========''','''
+   +---+
+   |   |    
+   0   |
+  /    |
+       |
+       |   
+========''','''
+   +---+
+   |   |    
+   0   |
+       |
+       |
+       |   
+========''','''
+   +---+
+   |   |    
+       |
+       |
+       |
+       |   
+========''']
 
 word_list = ["ardvark", "baboon", "camel"]
 display_list = []
@@ -17,6 +59,8 @@ playerLife = 6
 #chosen_word = word_list[random.randint(0,len(word_list) -1)]
 chosen_word = random.choice(word_list)
 
+
+
 #populate list with underscores
 for i in range(0,len(chosen_word)):
     display_list.append("_")
@@ -24,8 +68,8 @@ for i in range(0,len(chosen_word)):
 #ask player to guess a letter
 
 print(f"Psst, the solution is {chosen_word}")
+print(stages[playerLife])
 print(display_list)
-
 
 
 #a = 0 
@@ -50,7 +94,7 @@ while running:
             #print(f"{playerGuess} - {letter} found")
             display_list[i] = letter
             playerGuessHits += 1
-        else:
+        #else:
             #print(f"{playerGuess} - {letter} not found")
     
     if playerGuessHits == 0:
@@ -59,12 +103,15 @@ while running:
     if "_" not in display_list:
         running = False
         print("You win!")
+        print(stages[playerLife])
         print(display_list)
     elif playerLife <= 0:
         running = False
         print("You ded!")
+        print(stages[playerLife])
         print(display_list)
     else:
+        print(stages[playerLife])
         print(f"{playerLife} / {playerGuessHits}")
         print(display_list)
     
