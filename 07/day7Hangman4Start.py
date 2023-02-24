@@ -14,8 +14,6 @@ display_list = []
 running = True
 playerLife = 6
 
-letterFound = False
-
 #chosen_word = word_list[random.randint(0,len(word_list) -1)]
 chosen_word = random.choice(word_list)
 
