@@ -10,8 +10,14 @@ def encrypt(text, shift):
     encoded = ""
     
     for letter in text:
-        print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) + shift]}")
-        encoded += alphabet[alphabet.index(letter) + shift]
+        print(f"{alphabet.index(letter)} / {shift} / {alphabet.index(letter) + shift} / {len(alphabet)}")
+        if (alphabet.index(letter) + shift) >= len(alphabet):
+            newShift = (shift - (len(alphabet) - alphabet.index(letter)))
+            print(f"{letter} shifted {shift} - {newShift} will put it outside bounds of alphabet index")
+            encoded += alphabet[newShift]
+        else:
+            print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) + shift]}")
+            encoded += alphabet[alphabet.index(letter) + shift]
 
     print(f"The encode text is {encoded}")
 
