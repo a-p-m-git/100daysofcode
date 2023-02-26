@@ -52,4 +52,5 @@ while running:
     caesar(text,shift,direction)
     if input("Do you want to try again? [Y\\n]").lower() == 'n':
         running=False
-            
+
+#day8 complete!
