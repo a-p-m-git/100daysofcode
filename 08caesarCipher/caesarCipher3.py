@@ -6,42 +6,36 @@ shift = int(input("Type the shift number:\n"))
 
 #TODO-1: Combine the encrypt() and decrypt() functions into a single function called caesar(). 
 
-def encrypt(text, shift):
+def caesar(text, shift, action):
     encoded = ""
     
-    for letter in text:
-        print(f"{alphabet.index(letter)} / {shift} / {alphabet.index(letter) - shift} / {len(alphabet)}")
-        if (alphabet.index(letter) + shift) >= len(alphabet):
-            newShift = alphabet.index(letter) - shift
-            print(f"{letter} shifted {shift} - {newShift} {alphabet.index(letter) - shift} will put it outside bounds of alphabet index")
-            print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[newShift]}")
-            encoded += alphabet[newShift]
-        else:
-            print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) + shift]}")
-            encoded += alphabet[alphabet.index(letter) + shift]
+    if action == "encode":
+        for letter in text:
+            print(f"{alphabet.index(letter)} / {shift} / {alphabet.index(letter) - shift} / {len(alphabet)}")
+            if (alphabet.index(letter) + shift) >= len(alphabet):
+                newShift = alphabet.index(letter) - shift
+                print(f"{letter} shifted {shift} - {newShift} {alphabet.index(letter) - shift} will put it outside bounds of alphabet index")
+                print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[newShift]}")
+                encoded += alphabet[newShift]
+            else:
+                print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) + shift]}")
+                encoded += alphabet[alphabet.index(letter) + shift]
+    elif action == "decode":
+        for letter in text:
+            print(f"{alphabet.index(letter)} / {shift} / {alphabet.index(letter) - shift} / {len(alphabet)}")
+            if (alphabet.index(letter) - shift) <= 0:
+                newShift = alphabet.index(letter) - shift
+                print(f"{letter} shifted {shift} - {newShift} will put it outside bounds of alphabet index")
+                print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) + shift]}")
+                encoded += alphabet[newShift]
+            else:
+                print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) - shift]}")
+                encoded += alphabet[alphabet.index(letter) - shift]
 
     print(f"The encode text is {encoded}")
 
-def decrypt(text, shift):
-    deCoded = ""
-    
-    for letter in text:
-        print(f"{alphabet.index(letter)} / {shift} / {alphabet.index(letter) - shift} / {len(alphabet)}")
-        if (alphabet.index(letter) - shift) <= 0:
-            newShift = alphabet.index(letter) - shift
-            print(f"{letter} shifted {shift} - {newShift} will put it outside bounds of alphabet index")
-            print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) + shift]}")
-            deCoded += alphabet[newShift]
-        else:
-            print(f"{alphabet[alphabet.index(letter)]} -> {alphabet[alphabet.index(letter) - shift]}")
-            deCoded += alphabet[alphabet.index(letter) - shift]
-
-    print(f"The decoded text is {deCoded}")
     
 
 #TODO-2: Call the caesar() function, passing over the 'text', 'shift' and 'direction' values.
 
-if direction == "encode":
-    encrypt(text,shift)
-else:
-    decrypt(text,shift)
+caesar(text,shift,direction)
