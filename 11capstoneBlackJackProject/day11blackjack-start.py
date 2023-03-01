@@ -41,7 +41,7 @@ def blackjack():
     if response == 'y':
         print(art.logo)
         while deal(playerCards,computerCards):
-            deal(playerCards,computerCards)
+            pass
         return True 
     else:
         return False
@@ -61,7 +61,7 @@ def deal(playerCards,computerCards):
 
         response = input("Type 'y' to get another card, type 'n' to pass ").lower()
 
-        if response == 'y':
+        if response == 'y' and sum(playerCards) <= 21:
             playerCards.append(random.choice(cards))
             computerCards.append(random.choice(cards))
         
@@ -70,6 +70,10 @@ def deal(playerCards,computerCards):
         else:
             print(f"Your final hand: {playerCards}, Your final score: {sum(playerCards)}")
             print(f"Computer's final hand: {computerCards}, final score: {sum(computerCards)}")
+            if (sum(playerCards)) > (sum(computerCards)):
+                print("You are da WEINER!")
+            else:
+                print("Computers Wins!")
                     
         if int(sum(playerCards)) > 21 :
             print("You went over. You lose")
@@ -79,14 +83,7 @@ def deal(playerCards,computerCards):
             print("The computer went over. You WIN!")
             playing = False
             return False
-        elif sum(playerCards) > sum(computerCards):
-            print("You is da WEINER!!!")
-            playing = False
-            return False
-        else:
-            print("The computer wins, suckah!!")
-            playing = False
-            return False
+        
         
 while blackjack():
     blackjack()
