@@ -59,31 +59,56 @@ def deal(playerCards,computerCards):
     
     while playing:
 
-        response = input("Type 'y' to get another card, type 'n' to pass ").lower()
+        if sum(playerCards) > 21:
+                print("You went over! Computer Wins!")
+                print(f"Your final hand: {playerCards}, Your final score: {sum(playerCards)}")
+                print(f"Computer's final hand: {computerCards}, final score: {sum(computerCards)}")
+                playing = False
+                break    
+        elif sum(computerCards) > 21:
+                print("The computer went over! You da wiener!!!")
+                print(f"Your final hand: {playerCards}, Your final score: {sum(playerCards)}")
+                print(f"Computer's final hand: {computerCards}, final score: {sum(computerCards)}")
+                playing = False
+                break
 
-        if response == 'y' and sum(playerCards) <= 21:
-            playerCards.append(random.choice(cards))
-            computerCards.append(random.choice(cards))
+        response = input("Type 'y' to get another card, type 'n' to pass ").lower()
         
+        if response == 'y' and sum(playerCards) <= 21 and sum(computerCards) <=21:
+            playerCards.append(random.choice(cards))
+            if computer_move(sum(computerCards),sum(playerCards)):
+                computerCards.append(random.choice(cards))
+                print("Computer takes another card!")
+            else:
+                print("Computer Stands!")                
+                       
             print(f"Your cards: {playerCards}, finalScore: {sum(playerCards)}")
-            print(f"Computer's first card: {computerCards[0]}")
+            print(f"Computer's first card: {computerCards[0]}")                  
+        elif response == 'n':
+            if computer_move(sum(computerCards),sum(playerCards)):
+                computerCards.append(random.choice(cards))
         else:
             print(f"Your final hand: {playerCards}, Your final score: {sum(playerCards)}")
             print(f"Computer's final hand: {computerCards}, final score: {sum(computerCards)}")
             if (sum(playerCards)) > (sum(computerCards)):
                 print("You are da WEINER!")
+                playing = False
             else:
                 print("Computers Wins!")
+                playing = False
                     
-        if int(sum(playerCards)) > 21 :
-            print("You went over. You lose")
-            playing = False
-            return False
-        elif sum(computerCards) > 21:
-            print("The computer went over. You WIN!")
-            playing = False
-            return False
-        
+def computer_move(computerScore, playerScore):
+    #return true when hit or false when stand
+    
+    if computerScore <= 8:
+        return True
+    elif computerScore > 8 and computerScore <= 12:
+        return True
+    elif computerScore > 12 and computerScore <= 16:
+        return True
+    else:
+        return False
+    
         
 while blackjack():
     blackjack()
