@@ -46,6 +46,12 @@ def blackjack():
     else:
         return False
 
+def computer_move():
+    pass
+
+
+
+
 def deal(playerCards,computerCards):
     
     playing = True
@@ -97,6 +103,7 @@ def deal(playerCards,computerCards):
                 print("Computers Wins!")
                 playing = False
                     
+<<<<<<< HEAD
 def computer_move(computerScore, playerScore):
     #return true when hit or false when stand
     
@@ -109,6 +116,23 @@ def computer_move(computerScore, playerScore):
     else:
         return False
     
+=======
+        if int(sum(playerCards)) > 21 :
+            print("You went over. You lose")
+            playing = False
+        elif sum(computerCards) > 21:
+            print(f"The computer went over. You WIN! {sum(computerCards)}")
+            playing = False
+        elif sum(playerCards) == 21:
+            print("You is da WEINER!!!")
+            playing = False
+        elif sum(computerCards) == 21:
+            print(f"The computer wins, suckah!! {sum(computerCards)}")
+            playing = False
+
+
+
+>>>>>>> bb60179 (day 11 in prog)
         
 while blackjack():
     blackjack()
