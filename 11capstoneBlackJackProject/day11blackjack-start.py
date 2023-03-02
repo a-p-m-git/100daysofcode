@@ -85,8 +85,8 @@ def deal(playerCards,computerCards):
                 playing = False
                 break
 
-
-        response = input("Type 'y' to get another card, type 'n' to pass ").lower()
+        if not playerStand:
+            response = input("Type 'y' to get another card, type 'n' to pass ").lower()
         
         if response == 'y' and sum(playerCards) <= 21 and sum(computerCards) <=21:
             playerCards.append(random.choice(cards))
@@ -99,8 +99,11 @@ def deal(playerCards,computerCards):
             print(f"Your cards: {playerCards}, finalScore: {sum(playerCards)}")
             print(f"Computer's first card: {computerCards[0]}")                  
         elif response == 'n':
+            playerStand = True
             if computer_move(sum(computerCards),sum(playerCards)):
                 computerCards.append(random.choice(cards))
+            else:
+                computerStand = True
         else:
             print(f"Your final hand: {playerCards}, Your final score: {sum(playerCards)}")
             print(f"Computer's final hand: {computerCards}, final score: {sum(computerCards)}")
