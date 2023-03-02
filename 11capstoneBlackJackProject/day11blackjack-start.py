@@ -94,16 +94,13 @@ def deal(playerCards,computerCards):
                 computerCards.append(random.choice(cards))
                 print("Computer takes another card!")
             else:
-                print("Computer Stands!")                
+                print("Computer Stands!")         
                        
             print(f"Your cards: {playerCards}, finalScore: {sum(playerCards)}")
             print(f"Computer's first card: {computerCards[0]}")                  
         elif response == 'n':
-            playerStand = True
             if computer_move(sum(computerCards),sum(playerCards)):
                 computerCards.append(random.choice(cards))
-            else:
-                computerStand = True
         else:
             print(f"Your final hand: {playerCards}, Your final score: {sum(playerCards)}")
             print(f"Computer's final hand: {computerCards}, final score: {sum(computerCards)}")
@@ -126,6 +123,7 @@ def computer_move(computerScore, playerScore):
     else:
         return False
     
+=======
         if int(sum(playerCards)) > 21 :
             print("You went over. You lose")
             playing = False
@@ -141,6 +139,7 @@ def computer_move(computerScore, playerScore):
 
 
 
+>>>>>>> bb60179 (day 11 in prog)
         
 while blackjack():
     blackjack()
