@@ -1,6 +1,8 @@
 import art
 import random
 
+#20230303 - 0831
+
 user_cards = []
 computer_cards = []
 
