@@ -1,3 +1,4 @@
+import os
 import art
 import game_data
 import random
@@ -17,7 +18,7 @@ def compare_follower_counts(dictionaryA,dictionaryB):
         return "B"
 
 def game():
-    
+    os.system("cls")
     running = True
     score = 0
     
@@ -37,6 +38,7 @@ def game():
 
         if response == compare_follower_counts(game_choices["A"],game_choices["B"]):
             score += 1
+            os.system("clear")
             print(art.logo)
             print(f"You are right! Current Score is {score}")
             game_choices["A"] = game_choices[response]
