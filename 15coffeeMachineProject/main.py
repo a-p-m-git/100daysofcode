@@ -47,7 +47,7 @@ def check_resources(resourceList,menuList,customer_drink):
     if customer_drink == "espresso":
         if menuList[customer_drink]['ingredients']['water'] <= resourceList['water']:
             if menuList[customer_drink]['ingredients']['coffee'] <= resourceList['coffee']:
-                return True
+                return "True"
             else:
                 return "Not enough coffee"
         else:
@@ -56,7 +56,7 @@ def check_resources(resourceList,menuList,customer_drink):
         if menuList[customer_drink]['ingredients']['water'] <= resourceList['water']:
             if menuList[customer_drink]['ingredients']['milk'] <= resourceList['milk']:
                 if menuList[customer_drink]['ingredients']['coffee'] <= resourceList['coffee']:
-                    return True
+                    return "True"
                 else:
                     return "Not enough coffee"
             else:
@@ -67,7 +67,7 @@ def check_resources(resourceList,menuList,customer_drink):
         if menuList[customer_drink]['ingredients']['water'] <= resourceList['water']:
             if menuList[customer_drink]['ingredients']['milk'] <= resourceList['milk']:
                 if menuList[customer_drink]['ingredients']['coffee'] <= resourceList['coffee']:
-                        return True
+                        return "True"
                 else:
                     return "Not enough coffee"
             else:
@@ -110,30 +110,51 @@ while running:
             print("Sorry that's not enough money. Money refunded.")
             running = False
 
-        if check_resources(resources,MENU,response) == True:
+        resourcesAvailable = check_resources(resources,MENU,response)
+        
+        if resourcesAvailable == "True":
             playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
             print(f"Here is ${playerChangeReturned} in change")
-            print(f"Here is your {response}. Enjoy!")            
+            resources["coffee"] -= MENU[response]["ingredients"]["coffee"]
+            resources["water"] -= MENU[response]["ingredients"]["water"]
+            print(f"Here is your {response}. Enjoy!")
+        else:
+            print(f"Sorry, there is {resourcesAvailable}")
+            
     elif response == 'latte':
         print(f"Latte - {MENU[response]['cost']}")
         if check_player_money(playerMoney,MENU[response]['cost']) < MENU[response]['cost']:
             print("Sorry that's not enough money. Money refunded.")
             running = False
+        
+        resourcesAvailable = check_resources(resources,MENU,response)
             
-        if check_resources(resources,MENU,response) == True:
+        if resourcesAvailable == "True":
             playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
             print(f"Here is ${playerChangeReturned} in change")
-            print(f"Here is your {response}. Enjoy!")      
+            resources["coffee"] -= MENU[response]["ingredients"]["coffee"]
+            resources["water"] -= MENU[response]["ingredients"]["water"]
+            resources["milk"] -= MENU[response]["ingredients"]["milk"]
+            print(f"Here is your {response}. Enjoy!")
+        else:
+            print(f"Sorry, there is {resourcesAvailable}")
     elif response == 'cappuccino':
         print(f"Cappucino - {MENU[response]['cost']}")
         if check_player_money(playerMoney,MENU[response]['cost']) < MENU[response]['cost']:
             print("Sorry that's not enough money. Money refunded.")
             running = False
             
-        if check_resources(resources,MENU,response) == True:
+        resourcesAvailable = check_resources(resources,MENU,response)
+            
+        if resourcesAvailable == "True":
             playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
             print(f"Here is ${playerChangeReturned} in change")
-            print(f"Here is your {response}. Enjoy!")      
+            resources["coffee"] -= MENU[response]["ingredients"]["coffee"]
+            resources["water"] -= MENU[response]["ingredients"]["water"]
+            resources["milk"] -= MENU[response]["ingredients"]["milk"]
+            print(f"Here is your {response}. Enjoy!")
+        else:
+            print(f"Sorry, there is {resourcesAvailable}")
     elif response == 'report':
         resource_report(resources)
     elif response == 'off':
