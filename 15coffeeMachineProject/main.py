@@ -31,6 +31,8 @@ resources = {
     "money":0
 }
 
+playerMoney = {}
+
 running = True
 
 
@@ -73,25 +75,65 @@ def check_resources(resourceList,menuList,customer_drink):
         else:
             return "Not enough water"
 
+def check_player_money(playerCoins,drink_cost):
+    
+    playerCoinTotal = 0
+    
+    for key in playerCoins:
+        if key == "quarters":
+            playerCoinTotal += (playerCoins["quarters"] * .25)
+        elif key == "dimes":
+            playerCoinTotal += (playerCoins["dimes"] * .10)
+        elif key == "nickels":
+            playerCoinTotal += (playerCoins["nickels"] * .05)
+        else:
+            playerCoinTotal += (playerCoins["pennies"] * .01 )
+    
+    return playerCoinTotal
+        
+    
 
 while running:
     response = input("What would you like? (espresso/latte/cappuccino): ").lower()
-    print("Please insert coins: ")
-
-    quarters = int(input("How many quarters? "))
-    dimes = int(input("How many dimes? "))
-    nickels = int(input("How many nickels? "))
-    pennies = int(input("How many pennies? "))
+        
+    if response != "report" and response !="off":
+        print("Please insert coins: ")
+        playerMoney["quarters"] = int(input("How many quarters? "))
+        playerMoney["dimes"] = int(input("How many dimes? "))
+        playerMoney["nickels"] = int(input("How many nickels? "))
+        playerMoney["pennies"] = int(input("How many pennies? "))
 
     if response == 'espresso':
         print(f"Espresso - {MENU[response]['cost']}")
-        print(check_resources(resources,MENU,response))
+        
+        if check_player_money(playerMoney,MENU[response]['cost']) < MENU[response]['cost']:
+            print("Sorry that's not enough money. Money refunded.")
+            running = False
+
+        if check_resources(resources,MENU,response) == True:
+            playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
+            print(f"Here is ${playerChangeReturned} in change")
+            print(f"Here is your {response}. Enjoy!")            
     elif response == 'latte':
         print(f"Latte - {MENU[response]['cost']}")
-        print(check_resources(resources,MENU,response))
+        if check_player_money(playerMoney,MENU[response]['cost']) < MENU[response]['cost']:
+            print("Sorry that's not enough money. Money refunded.")
+            running = False
+            
+        if check_resources(resources,MENU,response) == True:
+            playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
+            print(f"Here is ${playerChangeReturned} in change")
+            print(f"Here is your {response}. Enjoy!")      
     elif response == 'cappuccino':
         print(f"Cappucino - {MENU[response]['cost']}")
-        print(check_resources(resources,MENU,response))
+        if check_player_money(playerMoney,MENU[response]['cost']) < MENU[response]['cost']:
+            print("Sorry that's not enough money. Money refunded.")
+            running = False
+            
+        if check_resources(resources,MENU,response) == True:
+            playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
+            print(f"Here is ${playerChangeReturned} in change")
+            print(f"Here is your {response}. Enjoy!")      
     elif response == 'report':
         resource_report(resources)
     elif response == 'off':
