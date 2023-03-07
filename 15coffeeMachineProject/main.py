@@ -114,9 +114,10 @@ while running:
         
         if resourcesAvailable == "True":
             playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
-            print(f"Here is ${playerChangeReturned} in change")
+            print(f"Here is ${round(playerChangeReturned,2)} in change")
             resources["coffee"] -= MENU[response]["ingredients"]["coffee"]
             resources["water"] -= MENU[response]["ingredients"]["water"]
+            resources["money"] += MENU[response]['cost']
             print(f"Here is your {response}. Enjoy!")
         else:
             print(f"Sorry, there is {resourcesAvailable}")
@@ -131,10 +132,11 @@ while running:
             
         if resourcesAvailable == "True":
             playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
-            print(f"Here is ${playerChangeReturned} in change")
+            print(f"Here is ${round(playerChangeReturned,2)} in change")
             resources["coffee"] -= MENU[response]["ingredients"]["coffee"]
             resources["water"] -= MENU[response]["ingredients"]["water"]
             resources["milk"] -= MENU[response]["ingredients"]["milk"]
+            resources["money"] += MENU[response]['cost']
             print(f"Here is your {response}. Enjoy!")
         else:
             print(f"Sorry, there is {resourcesAvailable}")
@@ -148,10 +150,11 @@ while running:
             
         if resourcesAvailable == "True":
             playerChangeReturned = check_player_money(playerMoney,MENU[response]['cost']) - MENU[response]['cost']
-            print(f"Here is ${playerChangeReturned} in change")
+            print(f"Here is ${round(playerChangeReturned,2)} in change")
             resources["coffee"] -= MENU[response]["ingredients"]["coffee"]
             resources["water"] -= MENU[response]["ingredients"]["water"]
             resources["milk"] -= MENU[response]["ingredients"]["milk"]
+            resources["money"] += MENU[response]['cost']
             print(f"Here is your {response}. Enjoy!")
         else:
             print(f"Sorry, there is {resourcesAvailable}")
