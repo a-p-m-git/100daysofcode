@@ -2,14 +2,17 @@ import turtle
 
 #TODO-1 DRAW A DASHED LINE FOR 10 PACES AND THEN A GAP OF 10 PACES 50 TIMES
 
-turtle_screen = turtle.getscreen()
+screen_width = 1024
+screen_height = 768
+
+turtle_screen = turtle.Screen()
+turtle_screen.screensize(screen_width,screen_height)
 tim_turtle = turtle.Turtle()
-tim_turtle.setx(100)
-tim_turtle.sety(100)
-print(tim_turtle.position())
 
+for i in range(50):
+  tim_turtle.forward(10)
+  tim_turtle.penup()
+  tim_turtle.forward(10)
+  tim_turtle.pendown()
 
-
-
-""" for i in range(50):
-  tim_turtle.forward(i) """
+turtle_screen.exitonclick()
