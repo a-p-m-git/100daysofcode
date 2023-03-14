@@ -9,7 +9,7 @@ turtle_screen = turtle.Screen()
 turtle_screen.screensize(screen_width,screen_height)
 tim_turtle = turtle.Turtle()
 
-for i in range(50):
+for i in range(15):
   tim_turtle.forward(10)
   tim_turtle.penup()
   tim_turtle.forward(10)
