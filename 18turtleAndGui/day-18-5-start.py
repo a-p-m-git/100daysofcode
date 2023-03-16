@@ -12,9 +12,9 @@ def random_color():
 
 ########### Challenge 5 - Spirograph ########
 tim.speed(0)
+#tim.width(10)
 
-
-for i in range(360):
+for i in range(int(360 / 5)):
     tim.left(5)
     tim.color(random_color())
     tim.circle(100)
