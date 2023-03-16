@@ -14,6 +14,7 @@ turtle_screen.screensize(screen_width,screen_height)
 turtle_screen.colormode(255)
 tim_turtle = t.Turtle()
 tim_turtle.pensize(12)
+tim_turtle.speed(0)
 
 while running:
     randomRGB = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
