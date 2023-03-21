@@ -30,10 +30,15 @@ running = True
 
 while running:
     s.update()
-    time.sleep(0.5)
+    time.sleep(0.1)
+    
     for dict in t_list:
-        dict.fd(20)
-
+        print(dict.xcor())
+        if dict.xcor() <= (400 - 10):
+            dict.fd(20)
+        else:
+            dict.setheading(180)
+            dict.fd(20)
 
 
 #TODO-3 CREATE SNAKE FOOD
@@ -45,8 +50,5 @@ while running:
 #TODO-6 DETECT COLLISION WITH WALL
 
 #TODO-7 DETECT COLLISION WITH TAIL
-
-
-
 
 s.exitonclick()
