@@ -32,14 +32,14 @@ while running:
     s.update()
     time.sleep(0.1)
     
-    for dict in t_list:
-        print(dict.xcor())
-        if dict.xcor() <= (400 - 10):
-            dict.fd(20)
-        else:
-            dict.setheading(180)
-            dict.fd(20)
-
+    print(t_list)
+    
+    counter = 2
+    for dict in reversed(t_list):
+        dict.goto(t_list[counter -1].xcor(),0)
+        counter -= 1
+        
+    t_list[0].fd(20)
 
 #TODO-3 CREATE SNAKE FOOD
 
