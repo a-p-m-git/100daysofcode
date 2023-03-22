@@ -1,14 +1,8 @@
-import turtle
-import random
-import time
+class Snake:
+    def __init__(self) -> None:
+        pass
 
-
-s = turtle.Screen()
-s.setup(width=600,height=600)
-s.tracer(0)
-s.bgcolor("black")
-s.title("sNake 0.0")
-
+def 
 #TODO-1 CREATE SNAKE BODY
 
 t_list = []
@@ -46,15 +40,3 @@ while running:
         t_list[0].setheading(0)
         t_list[0].write(t_list[0].xcor())   
    
-
-#TODO-3 CREATE SNAKE FOOD
-
-#TODO-4 DETECT COLLISION WITH FOOD
-
-#TODO-5 CREATE A SCOREBOARD
-
-#TODO-6 DETECT COLLISION WITH WALL
-
-#TODO-7 DETECT COLLISION WITH TAIL
-
-s.exitonclick()
