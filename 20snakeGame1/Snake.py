@@ -1,42 +1,49 @@
+import turtle
+import random
 class Snake:
     def __init__(self) -> None:
-        pass
+        self.t_list = []
+        self.t_body_len = 6
+        self.t_start_x = 0
+        self.t_start_y = 0
 
-def 
-#TODO-1 CREATE SNAKE BODY
+        self.create_body()
+                
+    def create_body(self):
+        for i in range(self.t_body_len):
+            self.t_list.append(turtle.Turtle("square"))
+            self.t_list[i].color("white")
+            self.t_list[i].penup()
+            self.t_list[i].setposition(self.t_start_x,self.t_start_y)
+            self.t_start_x -= 20
 
-t_list = []
-turtle_body_length = 8
-start_x , start_y = 0,0
-
-for i in range(turtle_body_length):
-    t_list.append(turtle.Turtle("square"))
-    t_list[i].color("white")
-    t_list[i].penup()
-    t_list[i].setposition(start_x,start_y)
-    start_x -= 20
-
-#TODO-2 MOVE THE SNAKE
-
-running = True
-
-while running:
-    s.update()
-    time.sleep(0.1)
+    def up(self):
+        if self.t_list[0].heading() != 270:
+            self.t_list[0].setheading(90)
     
-    print(t_list)
+    def down(self):
+        if self.t_list[0].heading() !=90:
+            self.t_list[0].setheading(270)
     
-    for a in range(len(t_list) -1,0,-1):
-        print(a)
-        t_list[a].setposition(t_list[a - 1].xcor(),t_list[a - 1].ycor())
+    def left(self):
+        if self.t_list[0].heading() != 0:
+            self.t_list[0].setheading(180)
     
-    t_list[0].fd(20)
-    print(t_list[0].xcor())
+    def right(self):
+        if self.t_list[0].heading() != 180:
+            self.t_list[0].setheading(0)
     
-    if t_list[0].xcor() >= 600:
-        t_list[0].setheading(random.randint(0,360))
-        t_list[0].write(t_list[0].xcor())
-    elif t_list[0].xcor() == -600:
-        t_list[0].setheading(0)
-        t_list[0].write(t_list[0].xcor())   
-   
+    
+    def move(self):
+        
+        for a in range(len(self.t_list) -1,0,-1):
+            self.t_list[a].setposition(self.t_list[a - 1].xcor(),self.t_list[a - 1].ycor())
+        
+        self.t_list[0].fd(20)
+        
+        if self.t_list[0].xcor() >= 600:
+            self.t_list[0].setheading(random.randint(0,360))
+            self.t_list[0].write(self.t_list[0].xcor())
+        elif self.t_list[0].xcor() == -600:
+            self.t_list[0].setheading(0)
+            self.t_list[0].write(self.t_list[0].xcor())
