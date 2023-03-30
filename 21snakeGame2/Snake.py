@@ -3,7 +3,7 @@ import random
 class Snake:
     def __init__(self) -> None:
         self.t_list = []
-        self.t_body_len = 6
+        self.t_body_len = 3
         self.t_start_x = 0
         self.t_start_y = 0
 
@@ -40,10 +40,6 @@ class Snake:
             self.t_list[a].setposition(self.t_list[a - 1].xcor(),self.t_list[a - 1].ycor())
         
         self.t_list[0].fd(20)
-        
-        if self.t_list[0].xcor() >= 600:
-            self.t_list[0].setheading(random.randint(0,360))
-            self.t_list[0].write(self.t_list[0].xcor())
-        elif self.t_list[0].xcor() == -600:
-            self.t_list[0].setheading(0)
-            self.t_list[0].write(self.t_list[0].xcor())
+            
+    def extend(self):
+        pass

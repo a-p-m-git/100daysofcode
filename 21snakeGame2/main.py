@@ -33,7 +33,7 @@ s.onkey(snake.right,"Right")
 
 while running:
     s.update()
-    time.sleep(0.1)
+    time.sleep(0.2)
     scoreboard.print()    
     
     #TODO-2 MOVE THE SNAKE
@@ -44,6 +44,7 @@ while running:
     if snake.t_list[0].distance(food) < 25:
         food.refresh()
         scoreboard.update()
+        snake.extend()
 
 
 #TODO-5 CREATE A SCOREBOARD
