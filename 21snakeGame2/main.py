@@ -61,5 +61,14 @@ while running:
 
 #TODO-7 DETECT COLLISION WITH TAIL
 
+    for sn in snake.t_list:
+        if sn == snake.t_list[0]:
+            pass
+        elif snake.t_list[0].distance(sn) < 10:
+            running = False
+            scoreboard.game_over()
+        
+
+
 
 s.exitonclick()

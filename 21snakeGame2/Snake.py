@@ -42,4 +42,9 @@ class Snake:
         self.t_list[0].fd(20)
             
     def extend(self):
-        pass
+        temp_x, temp_y = self.t_list[len(self.t_list) - 1].xcor(), self.t_list[len(self.t_list) - 1].ycor()
+        self.t_list.append(turtle.Turtle("square"))
+        self.t_list[len(self.t_list) - 1].color("white")
+        self.t_list[len(self.t_list) - 1].penup()
+        self.t_list[len(self.t_list) - 1].setposition(temp_x,temp_y)
+        
