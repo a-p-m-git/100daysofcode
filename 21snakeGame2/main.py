@@ -21,6 +21,8 @@ snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
 
+GAME_SPEED = .1
+
 s.listen()
 
 s.onkey(snake.up,"Up")
@@ -33,7 +35,7 @@ s.onkey(snake.right,"Right")
 
 while running:
     s.update()
-    time.sleep(0.2)
+    time.sleep(GAME_SPEED)
     scoreboard.print()    
     
     #TODO-2 MOVE THE SNAKE
@@ -45,6 +47,7 @@ while running:
         food.refresh()
         scoreboard.update()
         snake.extend()
+        GAME_SPEED -= .01
 
 
 #TODO-5 CREATE A SCOREBOARD
@@ -61,10 +64,8 @@ while running:
 
 #TODO-7 DETECT COLLISION WITH TAIL
 
-    for sn in snake.t_list:
-        if sn == snake.t_list[0]:
-            pass
-        elif snake.t_list[0].distance(sn) < 10:
+    for sn in snake.t_list[1:]:
+     if snake.t_list[0].distance(sn) < 10:
             running = False
             scoreboard.game_over()
         
